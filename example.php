@@ -1,6 +1,13 @@
+<script type="text/javascript">
+    function showCaptcha()
+    {
+        document.getElementById("captcha_image").src = "captcha.php";
+    }
+</script>
+
 <center>
     <form method="post">
-        <img src="captcha.php" alt="Captcha"><br>
+        <a href="javascript:;" onclick="showCaptcha()"><img src="click.png" alt="Captcha" id="captcha_image"></a><br>
         <input type="text" name="captcha"><br>
         <input type="submit" name="submit" value="Sprawdz">
     </form>
