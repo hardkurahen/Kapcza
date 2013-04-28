@@ -23,8 +23,10 @@ class GenerateCaptchaSet:
         for captcha in self.captcha_list:
             bg_id = random.choice(glob.glob('bg/*.gif'))
 
-            command_handler = subprocess.Popen('identify -format "%h" '+bg_id, stdout=subprocess.PIPE) 
-            (height, err) = command_handler.communicate()
+            cmd = ['identify', '-format', '%h', bg_id]
+
+            command_handler = subprocess.Popen(cmd, stdout=subprocess.PIPE).communicate()[0]
+            height = command_handler
             height = int(height[:3])
 
             pos_1 = random.randrange(height/2)
