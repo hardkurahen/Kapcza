@@ -5,15 +5,26 @@ last a bit, so please don't use it on production environment. It's absolutely
 ok to do that on any other machine.
 '''
 
-import os, random, subprocess, glob
+import os, random, subprocess, glob, sys
 
 class GenerateCaptchaSet:
     def __init__(self):
+
+        try:
+            if not os.path.exists('gen'):
+                os.makedirs('gen')
+        except:
+            sys.exit("Could not create ./gen/ directory!")
+
         self.create_dictionary()
         self.generate()
 
     def create_dictionary(self):
-        captcha_file = open('dictionary.txt')
+        try:
+            captcha_file = open('dictionary.txt')
+        except:
+            sys.exit("There is no dictionary file!")
+
         self.captcha_list = []
 
         for line in captcha_file:
@@ -21,7 +32,10 @@ class GenerateCaptchaSet:
 
     def generate(self):
         for captcha in self.captcha_list:
-            bg_id = random.choice(glob.glob('bg/*.gif'))
+            try:
+                bg_id = random.choice(glob.glob('bg/*.gif'))
+            except:
+                sys.exit("No background images detected!")
 
             cmd = ['identify', '-format', '%h', bg_id]
 
