@@ -37,8 +37,8 @@ class GenerateCaptchaSet:
 
             font_size = random.randrange(16, 20)
             os.system('convert '+bg_id+' -crop 90x25+'+str(pos_1)+'+'+str(pos_1/2)+' +repage \
-                        -fill #ffffff33 -stroke #00000033 -strokewidth 2 -draw "line '+l1+','+l2+' '+l3+','+l4+'" \
-                        -gravity center -font zektonbo.ttf -fill #ffffff77 -stroke #00000044 -strokewidth 4 -pointsize '+str(font_size)+' \
+                        -fill "#ffffff33" -stroke "#00000033" -strokewidth 2 -draw "line '+l1+','+l2+' '+l3+','+l4+'" \
+                        -gravity center -font zektonbo.ttf -fill "#ffffff77" -stroke "#00000044" -strokewidth 4 -pointsize '+str(font_size)+' \
                         -weight bold -draw "text 0,-1 '+captcha+'" -coalesce -layers OptimizeFrame gen/'+captcha+'.gif ')
 
 if __name__ == "__main__":
